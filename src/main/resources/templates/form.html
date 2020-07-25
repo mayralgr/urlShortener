@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <form action="#" th:action="@{/}" th:object="${urlInputForm}" method="post">
+            <table>
+                <tr>
+                    <td>Url:</td>
+                    <td><input type="text" th:field="*{url}" /></td>
+                    <td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Url Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
