@@ -1,4 +1,4 @@
-package com.example.urlShortener;
+package com.urlShortener.urlShortener;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
 
@@ -7,6 +7,9 @@ public class UrlInputForm {
 	private String url;
 	private String alias ="";
 
+	/**
+	 * Constructors
+	 */
 	public UrlInputForm()
 	{
 	}
@@ -16,6 +19,10 @@ public class UrlInputForm {
 		this.url = url;
 	}
 
+	/**
+	 * Setters and getters
+	 *
+	 */
 	public String getUrl() {
 		return this.url;
 	}
@@ -32,10 +39,19 @@ public class UrlInputForm {
 		return "Url: " + this.url + ", Alias:" + this.alias ;
 	}
 
+	/**
+	 * Method that validates if the Url is validate
+	 * 
+	 */
+	
 	public boolean validateUrl() {
 		UrlValidator urlValid = new UrlValidator();
 		return urlValid.isValid(this.url) || urlValid.isValid("http://" + this.url) || urlValid.isValid("https://" + this.url) ;
 	}
+
+	/**
+	 * It determinates wich method use to generate the alias based on the content of the URL
+	 */
     public void generateAlias() {
 		if(this.isAGoogleUrl())
 		{
@@ -60,17 +76,25 @@ public class UrlInputForm {
 
 	}
 
+	/**
+	 * method that determines if the url contains the word google
+	 * */
 	private boolean isAGoogleUrl()
 	{
 		return this.url.contains("google");
 	}
 
+	/**
+	 * method that determines if the url contains the word yahoo
+	 * */
 	private boolean isAYahooUrl()
 	{
 		return this.url.contains("yahoo");
 	}
 
-	// For google and yahoo 
+	/**
+	 * Generation of randomAlias for google and yahoo urls
+	 * */
 	private void generateRandomAlias(int size, int type)
 	{
 		boolean useLetters;
@@ -90,7 +114,9 @@ public class UrlInputForm {
 		}
 	}
 
-	// Alias generation for urls that not contain google or yahoo
+	/**
+	 * Alias generation for urls that not contain google or yahoo
+	 * */
 	private void generateRandomAlias()
 	{
 		String pattern = "[\\WaeiouAEIOU\\d]"; // patter for replace special characters, vowels and numbers
