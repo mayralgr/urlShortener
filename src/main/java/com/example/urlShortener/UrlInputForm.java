@@ -1,16 +1,9 @@
 package com.example.urlShortener;
-
-import java.nio.charset.Charset;
-import java.util.Random;
-
-import javax.validation.constraints.NotNull;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
 
 public class UrlInputForm {
 
-	@NotNull
 	private String url;
 	private String alias ="";
 
@@ -61,7 +54,7 @@ public class UrlInputForm {
 			else{
 				// Any other url
     			//-   alias will be based on the url itself by removing every special characters, vowels and numbers from it.
-				generateRandomAlias(3);
+				generateRandomAlias();
 			}
 		}
 
@@ -78,7 +71,7 @@ public class UrlInputForm {
 	}
 
 	// For google and yahoo 
-	private String generateRandomAlias(int size, int type)
+	private void generateRandomAlias(int size, int type)
 	{
 		boolean useLetters;
 		boolean useNumbers;
@@ -95,13 +88,13 @@ public class UrlInputForm {
 				this.alias = RandomStringUtils.random(size, useLetters, useNumbers);
 				break;
 		}
-		return "";
 	}
 
-	// for all other urls
-	private String generateRandomAlias(int type)
+	// Alias generation for urls that not contain google or yahoo
+	private void generateRandomAlias()
 	{
-		return "";
+		String pattern = "[\\WaeiouAEIOU\\d]"; // patter for replace special characters, vowels and numbers
+		this.alias = this.url.replaceAll(pattern, ""); 
 	}
 
 }
