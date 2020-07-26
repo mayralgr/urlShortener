@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +27,7 @@ public class WebController implements WebMvcConfigurer {
 	}
 
 	@GetMapping("/")
-	public ModelAndView showForm(UrlInputForm urlForm) {
+	public ModelAndView showForm(UrlInputForm url) {
 		ModelAndView mv = new ModelAndView();
         mv.addObject("url", "hola");
         mv.setViewName("form");
@@ -35,48 +37,28 @@ public class WebController implements WebMvcConfigurer {
     /**
      * Where 
      * url : string for json post
-     * urlForm: url from form interface
      * 
      */
-	@PostMapping("/")
-    public ModelAndView checkUrl(// @RequestBody String url, 
-                                @Valid UrlInputForm urlForm, 
-                                Model model, 
-                                BindingResult bindingResult) {
-        // if it comes from post and not the interface, the object is set
-
-        /*System.out.println(url);
-        if (urlForm.getUrl() == null)
-        {
-            urlForm = new UrlInputForm();
-            urlForm.setUrl(url);
-        }*/
-
-		if (bindingResult.hasErrors()) {
-			ModelAndView mv = new ModelAndView("form");
-            mv.addObject("url", urlForm.getUrl());
-            mv.setViewName("form");
-            return mv;
-        }
-        
-        System.out.println(urlForm.getUrl());
-        System.out.println(urlForm.validateUrl());
-        if(urlForm.validateUrl()){
+	@PostMapping(path = "/", consumes = "application/json")
+    public ResponseEntity<String> generateAliasUrl(@RequestBody UrlInputForm url) {
+       // System.out.println(url);
+        System.out.println(url.getUrl());
+        System.out.println(url.validateUrl());
+        if(url.validateUrl()){
             // is a valid url, an alias is generated
-            urlForm.generateAlias();
-            System.out.println(urlForm.getAlias());
+            url.generateAlias();
+            System.out.println(url.getAlias());
             // verification that does not exist in the list
-            if(!urlsGenerated.stream().anyMatch(source -> source.getUrl() == urlForm.getUrl()))
+            if(!urlsGenerated.stream().anyMatch(source -> source.getUrl() == url.getUrl()))
             {
-                urlsGenerated.add(urlForm);
+                urlsGenerated.add(url);
                 System.out.println("success");
                 System.out.println(urlsGenerated.toString());
+                return new ResponseEntity(HttpStatus.OK);
             }
         }
-        ModelAndView mv = new ModelAndView("results");
-        mv.addObject("url", urlForm.getUrl());
-        mv.setViewName("results");
-        return mv;
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+		
     }
     
 }

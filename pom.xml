@@ -57,6 +57,12 @@
             <artifactId>commons-validator</artifactId>
             <version>1.6</version>
         </dependency>
+		<!--for generation of strings-->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
 	</dependencies>
 
 	<build>
