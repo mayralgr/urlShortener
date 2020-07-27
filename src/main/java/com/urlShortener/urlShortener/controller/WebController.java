@@ -42,7 +42,7 @@ public class WebController {
     public ResponseEntity<String> generateAliasUrl(@RequestBody UrlInputForm url) {
         if(webService.validateUrl(url.getUrl())){
             // verification that does not exist in the list
-            UrlInputForm urlInlist = webService.findExistinggUrl(urlsGenerated,url.getUrl());
+            UrlInputForm urlInlist = webService.findExistingUrl(urlsGenerated,url.getUrl());
             if(urlInlist==null)
             {
                 // is a valid url, and does not exist in the list, an alias is generated

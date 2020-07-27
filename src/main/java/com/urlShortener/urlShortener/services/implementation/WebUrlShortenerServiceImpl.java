@@ -1,10 +1,8 @@
 package com.urlShortener.urlShortener.services.implementation;
 
 import java.util.List;
-
 import com.urlShortener.urlShortener.model.UrlInputForm;
 import com.urlShortener.urlShortener.services.WebUrlShortenerService;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.stereotype.Service;
@@ -35,7 +33,7 @@ public class WebUrlShortenerServiceImpl implements WebUrlShortenerService {
     }
 
     @Override
-    public UrlInputForm findExistinggUrl(List<UrlInputForm> urlsGenerated, String url) {
+    public UrlInputForm findExistingUrl(List<UrlInputForm> urlsGenerated, String url) {
         try { 
             return urlsGenerated.stream().filter(o -> o.getUrl().equals(url)).findFirst().get();
             
