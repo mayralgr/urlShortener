@@ -11,12 +11,12 @@ Del cual genera un #####alias
 http:localhost/BdfGT
 Del cual regresa el url original
 
-###Los alias se general de acuerdo al contenido de la url bajo los criterios:
+### Los alias se general de acuerdo al contenido de la url bajo los criterios:
 * Contiene la palabra google
 El alias contiene 5 caracteres alfabéticos
 * Contiene la palabra yahoo
 El alias contiene 7 caracteres alfanuméricos
-*Cualquier otro
+* Cualquier otro
 Basado en la url original removiendo caracteres especiales, vocales y números 
 
 # Ejemplos de Uso
