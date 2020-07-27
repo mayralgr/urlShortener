@@ -5,8 +5,7 @@
 El acortador funciona recibiendo a través de 
 * POST un url en el formato:
 {"url":"https://nearsoft.com"}
-Del cual genera un 
-### alias
+Del cual genera un alias
 * GET un url con el alias buscado
 http:localhost/BdfGT
 Del cual regresa el url original
