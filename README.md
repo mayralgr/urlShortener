@@ -20,13 +20,13 @@ El alias contiene 7 caracteres alfanuméricos
 Basado en la url original removiendo caracteres especiales, vocales y números 
 
 # Ejemplos de Uso
-https://nearsoft.com -> alias:httpsnrsftcm
-www.google.com -> alias:lavlG
-www.yahoo.com -> alias:5Xp1QsM
-www.something.mx/435#25 -> alias:wwwsmthngmx
-www.algo.mx/428%go%here -> alias:wwwlgmxghr
-https://www.google.com.mx/maps/@22.1440199,-100.9451008,15z -> alias:hsPwH
-www.udfhf@.mx/53jfs -> Invalid Url
+* https://nearsoft.com -> alias:httpsnrsftcm
+* www.google.com -> alias:lavlG
+* www.yahoo.com -> alias:5Xp1QsM
+* www.something.mx/435#25 -> alias:wwwsmthngmx
+* www.algo.mx/428%go%here -> alias:wwwlgmxghr
+* https://www.google.com.mx/maps/@22.1440199,-100.9451008,15z -> alias:hsPwH
+* www.udfhf@.mx/53jfs -> Invalid Url
 
 # Enfoque
 División del proyecto:
