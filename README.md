@@ -72,7 +72,7 @@ URL: http://localhost:8080/{alias}
 # Enfoque
 ## División del proyecto
 ### Modelo
-El cuál contiene los atributos
+El cual contiene los atributos
 ```
 - url
 - alias
