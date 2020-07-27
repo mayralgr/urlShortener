@@ -34,7 +34,7 @@ Método: POST
 URL: http://localhost:8080/
 Cuerpo: content-type = json
 {
-   "url": "www.google.com"
+   "url": "https://nearsoft.com"
 }
 ```
 
