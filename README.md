@@ -47,6 +47,7 @@ Cuerpo: content-type = json
 ```
 
 # Obtención de URL original a través del Alias
+#### Request
 ```
 Método: GET
 URL: http://localhost:8080/{alias}
